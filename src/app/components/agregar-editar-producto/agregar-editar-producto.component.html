@@ -1,0 +1,38 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 mt-1 ">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">{{ operacion }} Producto</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addEditProduct()">
+                    <input type="text" formControlName="name" class="form-control" placeholder="Ingrese nombre">
+                    <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" class="error">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+                    <input type="text" formControlName="description" class="form-control mt-2" placeholder="Ingrese descripcion">
+                    <span *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched" class="error">
+                        El campo descripcion es <strong>requerido</strong>
+                    </span>
+                    <input type="number" formControlName="price" class="form-control mt-2" placeholder="Ingrese precio">
+                    <span *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched" class="error">
+                        El campo precio es <strong>requerido</strong>
+                    </span>
+                    <input type="number" formControlName="stock" class="form-control mt-2" placeholder="Ingrese stock">
+                    <span *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched" class="error">
+                        El campo stock es <strong>requerido</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button type="button" routerLink="/" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
